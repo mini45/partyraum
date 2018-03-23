@@ -17,4 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/',['as'=>'home','uses'=>'HomeController@index']);
+    Route::get('calendar',['as'=>'calendar','uses'=>'CalendarController@index']);
+    Route::get('profil',['as'=>'profil','uses'=>'CalendarController@index']);
+
+
+    Route::get('webdav',['as'=>'profil','uses'=>'WebDavController@test']);
+
+
+});
+
+
+
+
+
+

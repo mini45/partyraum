@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -64,6 +64,16 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'webdav' => [
+            'driver' => 'webdav',
+            'baseUri' => 'https://cloud.btcwash.de/remote.php/webdav',
+            'userName' => '',
+            'password' => '',
+            'curl_options' => [
+                CURLOPT_SSL_VERIFYPEER => false
+            ]
+//	    'pathPrefix' => 'backups', // optional
+        ],
     ],
 
 ];
